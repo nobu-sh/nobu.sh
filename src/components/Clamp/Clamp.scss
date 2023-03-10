@@ -1,0 +1,11 @@
+section.Clamper {
+  width: 100%;
+  height: fit-content;
+  padding: 0 var(--content-spacing-x);
+
+  > div {
+    max-width: var(--content-clamp);
+    width: 100%;
+    margin: auto;
+  }
+}
