@@ -22,13 +22,27 @@ nav {
   }
 }
 
+// @keyframes GlowStrobe {
+//   0% {
+//     text-shadow: rgba(229, 146, 182, 0.8) 0 0 20px;
+//   }
+//   50% {
+//     text-shadow: rgba(229, 146, 182, 1) 0 0 30px;
+//   }
+//   100% {
+//     text-shadow: rgba(229, 146, 182, 0.8) 0 0 20px;
+//   }
+// }
+
+
+
 div.Navbar {
   display: flex;
   height: 80px;
   align-items: center;
 
   h1 {
-    span {
+    span.Retro {
       font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;
       font-weight: 800;
@@ -39,6 +53,10 @@ div.Navbar {
       &.Flash {
         animation: Strobe 2s infinite ease;
       }
+    }
+    span.Glow {
+      transition: text-shadow ease 300ms;
+      text-shadow: rgb(254, 177, 210, 0.8) 0 0 calc(30px * var(--glow-enabled));
     }
     color: var(--accent-color);
     font-size: 24px;

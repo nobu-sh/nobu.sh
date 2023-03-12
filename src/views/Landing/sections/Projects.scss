@@ -1,0 +1,396 @@
+@import '@/global/breakpoints.scss';
+
+div.Projects {
+  padding: 4rem 0;
+
+  h3, p.Subtitle {
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 900;
+    margin-block-end: 4px;
+
+    @include sm {
+      font-size: 30px;
+      line-height: 38px;
+    }
+
+    span {
+      color: var(--accent-color);
+      transition: text-shadow ease 300ms;
+      text-shadow: rgb(254, 177, 210) 0 0 calc(40px * var(--glow-enabled));
+    }
+  }
+
+  p.Subtitle {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 500;
+    color: var(--text-dimmed);
+
+    @include sm {
+      font-size: 18px;
+      line-height: 26px;
+    }
+  }
+
+  div.ProjectArea {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 6rem;
+
+    margin-block-start: 6rem;
+
+    @include md {
+      margin-block-start: 4rem;
+    }
+
+    div.ProjectItem {
+      display: flex;
+      flex-direction: row;
+      gap: 1.5rem;
+
+      &:nth-child(even) {
+        flex-direction: row-reverse;
+        div.Image {
+          a img {
+            float: left;
+          }
+        }
+      }
+
+      @include md {
+        flex-direction: column-reverse;
+
+        &:nth-child(even) {
+          flex-direction: column-reverse;
+        }
+      }
+
+      div.Text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 16px;
+
+        @include md {
+          border-bottom: 1px solid var(--text-dimmed-more);
+          padding-bottom: 4rem;
+        }
+
+        h5 {
+          font-size: 24px;
+          line-height: 32px;
+          font-weight: 900;
+
+          @include sm {
+            font-size: 22px;
+            line-height: 30px;
+          }
+        }
+
+        p {
+          font-size: 20px;
+          line-height: 28px;
+          font-weight: 500;
+          color: var(--text-dimmed);
+          max-width: 52ch;
+
+          @include sm {
+            font-size: 18px;
+            line-height: 26px;
+          }
+        }
+
+        div.Technologies {
+          display: flex;
+          flex-direction: row;
+          gap: 16px;
+          margin-block-start: 2px;
+          margin-block-end: 4px;
+          flex-wrap: wrap;
+
+          p {
+            font-size: 18px;
+            line-height: 28px;
+            font-weight: 500;
+            color: var(--accent-color);
+            padding: 0 8px;
+            border-radius: 8px;
+            border: 1px solid var(--accent-color);
+
+            @include sm {
+              font-size: 16px;
+              line-height: 24px;
+            }
+          }
+        }
+
+        div.Links {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+          height: 24px;
+          a {
+            width: 24px;
+            height: 24px;
+            svg {
+              transition: all ease 200ms;
+            }
+            &.Github svg {
+              fill: var(--text-dimmed);
+              width: 24px;
+              height: 24px;
+            }
+            &.LinkTo svg {
+              stroke: var(--text-dimmed);
+              width: 25px;
+              height: 25px;
+            }
+
+            &:hover {
+              &.Github svg {
+                fill: var(--text-color);
+              }
+              &.LinkTo svg {
+                stroke: var(--text-color);
+              }
+            }
+          }
+        }
+      }
+
+      div.Image {
+        flex-basis: 60%;
+
+        @include md {
+          flex-basis: 100%;
+          margin-block-end: 1rem;
+        }
+        a img {
+          filter: saturate(10%);
+          transform: scale(1);
+          transition: all ease 300ms;
+          max-width: 85%;
+          float: right;
+          height: auto;
+          display: block;
+
+          @include md {
+            filter: none;
+            max-width: 100%;
+          }
+        }
+        a:hover img {
+          filter: none;
+          transform: scale(1.02);
+        }
+      }
+    }
+  }
+
+  div.ExtraProjectArea {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-block-start: 6rem;
+
+    @include md {
+      margin-block-start: 2rem;
+    }
+
+    div.ExtraProjects {
+      margin-block-end: 6rem;
+
+      @include md {
+        margin-block-end: 2rem;
+      }
+    }
+
+    button.ShowExtra {
+      background-color: transparent;
+      outline: none;
+      border: none;
+      margin: none;
+      padding: none;
+      color: var(--text-dimmed);
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+
+      opacity: 70%;
+      transition: opacity ease 200ms;
+
+      &:hover {
+        opacity: 100%;
+      }
+
+      position: relative;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 40%;
+        height: 1px;
+        background-color: var(--text-dimmed);
+
+        @include md {
+          background-color: transparent;
+        }
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 40%;
+        height: 1px;
+        background-color: var(--text-dimmed);
+
+        @include md {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}
+
+@keyframes animateIn {
+  from {
+    top: -20px;
+    opacity: 0%;
+  }
+  to {
+    top: 0px;
+    opacity: 100%;
+  }
+}
+
+ul.MoreProjects {
+  word-wrap: break-word;
+  display: grid;
+  gap: 2.125rem;
+  grid-template-columns: repeat(auto-fill,minmax(24rem,1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  position: relative;
+  top: 0px;
+  opacity: 100%;
+
+  animation: animateIn 200ms ease ;
+
+  @include sm {
+    grid-template-columns: 1fr;
+  }
+
+  a.ExProject {
+    border: solid 1px var(--text-dimmed-more);
+    transition: all ease 200ms;
+    transform: translateY(0px);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    text-decoration: none;
+
+    div.Title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      h6 {
+        font-size: 20px;
+        line-height: 28px;
+        font-weight: 900;
+        color: var(--text-color);
+
+        @include sm {
+          font-size: 18px;
+          line-height: 26px;
+        }
+      }
+      div.Links {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        height: 24px;
+        a {
+          width: 24px;
+          height: 24px;
+          svg {
+            transition: all ease 200ms;
+          }
+          &.Github svg {
+            fill: var(--text-dimmed);
+            width: 24px;
+            height: 24px;
+          }
+          &.LinkTo svg {
+            stroke: var(--text-dimmed);
+            width: 25px;
+            height: 25px;
+          }
+
+          &:hover {
+            &.Github svg {
+              fill: var(--text-color);
+            }
+            &.LinkTo svg {
+              stroke: var(--text-color);
+            }
+          }
+        }
+      }
+    }
+
+    p {
+      color: var(--text-dimmed);
+
+      @include sm {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+
+    div.Technologies {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      margin-block-start: 2px;
+      margin-block-end: 4px;
+      flex-wrap: wrap;
+
+      p {
+        font-size: 16px;
+        line-height: 28px;
+        font-weight: 500;
+        color: var(--accent-color);
+        padding: 0 8px;
+        border-radius: 8px;
+        border: 1px solid var(--accent-color);
+
+        @include sm {
+          font-size: 14px;
+          line-height: 22px;
+        }
+      }
+    }
+
+    &:hover {
+      border: solid 1px var(--text-dimmed);
+      transform: translateY(-2px);
+    }
+  }
+}
