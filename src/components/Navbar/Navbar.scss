@@ -57,7 +57,8 @@ div.Navbar {
     }
     span.Glow {
       transition: text-shadow ease 300ms;
-      text-shadow: rgb(254, 177, 210, 0.8) 0 0 calc(30px * var(--glow-enabled));
+      // Temp remove makes easter egg darker text look bad
+      // text-shadow: rgb(254, 177, 210, 0.8) 0 0 calc(30px * var(--glow-enabled));
     }
     color: var(--accent-color);
     transition: color 0.2s ease;
