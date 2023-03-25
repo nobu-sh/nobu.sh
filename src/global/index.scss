@@ -5,6 +5,7 @@ html {
   background-color: var(--background-color);
   color: var(--text-color);
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 *, *::before, *::after {
@@ -41,6 +42,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 button {
