@@ -6,6 +6,7 @@ html {
   color: var(--text-color);
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 *, *::before, *::after {
