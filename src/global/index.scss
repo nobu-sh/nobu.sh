@@ -5,8 +5,7 @@ html {
   background-color: var(--background-color);
   color: var(--text-color);
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  // overflow-x: hidden;
 }
 
 *, *::before, *::after {
