@@ -1,3 +1,23 @@
+@keyframes animatein2 {
+	from {
+		transform: scale(0);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
 div.Landing {
   overflow-x: hidden;
+
+  canvas {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    animation: animatein2 1s ease;
+  }
 }
