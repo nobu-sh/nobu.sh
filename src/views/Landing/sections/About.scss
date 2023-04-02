@@ -98,19 +98,23 @@ div.About {
 
         &.Stroke svg {
           stroke: var(--text-dimmed);
+          fill: transparent;
         }
 
         &.Fill svg {
           fill: var(--text-dimmed);
+          stroke: transparent;
         }
 
         &:hover {
           &.Stroke svg {
             stroke: var(--text-color);
+            fill: transparent;
           }
   
           &.Fill svg {
             fill: var(--text-color);
+            stroke: transparent;
           }
         }
 
