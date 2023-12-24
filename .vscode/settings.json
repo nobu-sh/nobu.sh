@@ -1,14 +1,10 @@
 {
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "eslint.format.enable": true,
+  "editor.insertSpaces": false,
   "editor.tabSize": 2,
-  "files.eol": "\n",
-  "files.associations": {
-    "*.json": "jsonc"
-  },
-  "explorer.fileNesting.enabled": true,
-  "explorer.fileNesting.expand": false,
-  "explorer.fileNesting.patterns": {
-    "tsconfig.json": "tsconfig.*.json",
-    "package.json": "package-lock.json, yarn.lock"
-  },
-  "typescript.tsdk": "node_modules\\typescript\\lib"
+  "editor.trimAutoWhitespace": false,
+  "files.insertFinalNewline": true,
+  "files.eol": "\n"
 }

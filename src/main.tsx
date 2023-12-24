@@ -1,7 +1,28 @@
-import ReactDOM from 'react-dom/client'
-import App from '@/base/App'
-import '@/global/index.scss'
+import React from "react";
+import * as ReactDOM from "react-dom/client";
+import { RecoilRoot } from "recoil";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <App />,
-)
+import SillyGame from "./pages/silly-game";
+import MainPage from "./pages/main";
+
+import "./index.css";
+
+const router = createBrowserRouter([
+	{
+		path: "/silly-game",
+		Component: () => <SillyGame />
+	},
+	{
+		path: "*",
+		Component: () => <MainPage />
+	}
+]);
+
+ReactDOM.createRoot(document.querySelector("#root")!).render(
+	<React.StrictMode>
+		<RecoilRoot>
+			<RouterProvider router={router} />
+		</RecoilRoot>
+	</React.StrictMode>
+);
