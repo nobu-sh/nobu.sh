@@ -9,5 +9,6 @@
   "explorer.fileNesting.patterns": {
     "tsconfig.json": "tsconfig.*.json",
     "package.json": "package-lock.json, yarn.lock"
-  }
+  },
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }
