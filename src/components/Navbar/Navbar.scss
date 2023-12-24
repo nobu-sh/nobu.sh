@@ -22,18 +22,6 @@ nav {
   }
 }
 
-// @keyframes GlowStrobe {
-//   0% {
-//     text-shadow: rgba(229, 146, 182, 0.8) 0 0 20px;
-//   }
-//   50% {
-//     text-shadow: rgba(229, 146, 182, 1) 0 0 30px;
-//   }
-//   100% {
-//     text-shadow: rgba(229, 146, 182, 0.8) 0 0 20px;
-//   }
-// }
-
 
 
 div.Navbar {
@@ -48,7 +36,7 @@ div.Navbar {
         monospace;
       font-weight: 800;
       position: relative;
-      bottom: 1px;
+      // bottom: 1px;
       color: var(--text-dimmed);
 
       &.Flash {
@@ -64,41 +52,48 @@ div.Navbar {
     transition: color 0.2s ease;
     font-size: 24px;
     line-height: 24px;
+
+    span.Extra {
+      font-size: 16px;
+      line-height: 16px;
+      color: var(--text-dimmed);
+      position: relative;
+      bottom: 5px;
+    }
+  }
+
+  a {
+    color: var(--text-dimmed);
+    text-decoration: none;
+    font-size: 14px;
+    position: relative;
+    transition: color ease 200ms;
+  
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      height: 1px;
+      width: 100%;
+      background-color: var(--accent-color);
+      transform: scale(0);
+      transform-origin: center;
+      transition: all ease 200ms;
+    }
+  
+    &:hover {
+      color: var(--text-color);
+      &::after {
+        transform: scale(1);
+      }
+    }
   }
 
   div.HangRight {
     margin-left: auto;
-
     display: flex;
     flex-direction: row;
     gap: 32px;
-
-    a {
-      color: var(--text-dimmed);
-      text-decoration: none;
-      font-size: 14px;
-      position: relative;
-      transition: color ease 200ms;
-
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -1px;
-        height: 1px;
-        width: 100%;
-        background-color: var(--accent-color);
-        transform: scale(0);
-        transform-origin: center;
-        transition: all ease 200ms;
-      }
-
-      &:hover {
-        color: var(--text-color);
-        &::after {
-          transform: scale(1);
-        }
-      }
-    }
   }
 }

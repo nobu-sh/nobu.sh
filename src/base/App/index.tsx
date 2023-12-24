@@ -6,7 +6,7 @@ import './App.scss'
 const App = () => {
   return (
     <RecoilRoot>
-      <div className="App">
+      <div className="App" id="silly-inject-point">
         <Router />
       </div>
     </RecoilRoot>

@@ -3,6 +3,15 @@
 div.Projects {
   padding: 4rem 0;
 
+  .Github svg {
+    width: 24px;
+    height: 24px;
+  }
+  .LinkTo svg {
+    width: 25px;
+    height: 25px;
+  }
+
   h3, p.Subtitle {
     text-align: center;
   }
@@ -138,28 +147,6 @@ div.Projects {
           a {
             width: 24px;
             height: 24px;
-            svg {
-              transition: all ease 200ms;
-            }
-            &.Github svg {
-              fill: var(--text-dimmed);
-              width: 24px;
-              height: 24px;
-            }
-            &.LinkTo svg {
-              stroke: var(--text-dimmed);
-              width: 25px;
-              height: 25px;
-            }
-
-            &:hover {
-              &.Github svg {
-                fill: var(--text-color);
-              }
-              &.LinkTo svg {
-                stroke: var(--text-color);
-              }
-            }
           }
         }
       }
@@ -329,28 +316,6 @@ ul.MoreProjects {
         a {
           width: 24px;
           height: 24px;
-          svg {
-            transition: all ease 200ms;
-          }
-          &.Github svg {
-            fill: var(--text-dimmed);
-            width: 24px;
-            height: 24px;
-          }
-          &.LinkTo svg {
-            stroke: var(--text-dimmed);
-            width: 25px;
-            height: 25px;
-          }
-
-          &:hover {
-            &.Github svg {
-              fill: var(--text-color);
-            }
-            &.LinkTo svg {
-              stroke: var(--text-color);
-            }
-          }
         }
       }
     }

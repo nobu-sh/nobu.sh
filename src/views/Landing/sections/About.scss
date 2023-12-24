@@ -93,31 +93,7 @@ div.About {
         svg {
           width: 24px;
           height: 24px;
-          transition: all ease 200ms;
         }
-
-        &.Stroke svg {
-          stroke: var(--text-dimmed);
-          fill: transparent;
-        }
-
-        &.Fill svg {
-          fill: var(--text-dimmed);
-          stroke: transparent;
-        }
-
-        &:hover {
-          &.Stroke svg {
-            stroke: var(--text-color);
-            fill: transparent;
-          }
-  
-          &.Fill svg {
-            fill: var(--text-color);
-            stroke: transparent;
-          }
-        }
-
       }
     }
   }

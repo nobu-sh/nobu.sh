@@ -21,19 +21,19 @@ const About = () => (
         <p>Contact Me</p>
       </div>
       <div className="Socials">
-        <a href="mailto:chat@nobu.sh" className="Mail Stroke" target="_blank">
+        <a href="mailto:chat@nobu.sh" target="_blank">
           <At />
         </a>
-        <a href="https://www.linkedin.com/in/nobu-sh/" className="LinkedIn Fill" target="_blank">
+        <a href="https://www.linkedin.com/in/nobu-sh/" target="_blank">
           <LinkedIn />
         </a>
-        <a href="https://github.com/nobu-sh" className="GitHub Fill" target="_blank">
+        <a href="https://github.com/nobu-sh" target="_blank">
           <GitHub />
         </a>
-        <a href="https://t.me/nobu_sh" className="Telegram Fill" target="_blank">
+        <a href="https://t.me/nobu_sh" target="_blank">
           <Telegram />
         </a>
-        <a href="https://discord.com/users/316669053957832706" className="Discord Fill" target="_blank">
+        <a href="https://discord.com/users/316669053957832706" target="_blank">
           <Discord />
         </a>
       </div>

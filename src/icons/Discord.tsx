@@ -1,5 +1,5 @@
 export default () => (
-  <svg version="1.1" viewBox="0 0 29.088 28.108" xmlns="http://www.w3.org/2000/svg">
+  <svg version="1.1" viewBox="0 0 29.088 28.108" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
   <g transform="matrix(.85674 0 0 .85674 -54.606 -107.94)" strokeWidth="1.1672">
     <g transform="matrix(1.0955 0 0 1.0955 -6.138 -20.754)" strokeWidth="1.2436">
     <g transform="matrix(.26458 0 0 .26458 52.843 113.03)" strokeWidth="1.2436">

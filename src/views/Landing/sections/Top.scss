@@ -93,18 +93,11 @@ div.Top {
         a {
           width: 40px;
           height: 40px;
+          color: var(--text-dimmed-more);
 
           svg {
             width: 40px;
             height: 40px;
-            fill: var(--text-dimmed);
-            // Sets transition for hover animation
-            transition: fill ease 200ms;
-          }
-
-          // Hovering changes the color to contrast more
-          &:hover svg {
-            fill: var(--text-color);
           }
         }
       }

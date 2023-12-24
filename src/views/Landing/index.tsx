@@ -1,10 +1,10 @@
 import Top from './sections/Top'
 import Projects from './sections/Projects'
 import About from './sections/About'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { FC, useEffect, useState } from 'react'
-import { KongaAudio, KongaCanvas } from '@/utils/KongaEngine'
-import { Vector2 } from '@/utils/vector2'
+import { KongaAudio, KongaCanvas } from '@/engines/konga-engine/KongaEngine'
+import { Vector2 } from '@/engines/konga-engine/vector2'
 import { useRecoilValue } from 'recoil'
 import { kongaState } from '@/state'
 
@@ -13,6 +13,8 @@ import './Landing.scss'
 const Landing = () => {
   const konga = useRecoilValue(kongaState)
   const kongaAudio = KongaAudio('main-konga-root')
+
+  const [lastKeys, setLastKeys] = useState<Array<string>>([])
 
   useEffect(() => {
     if (!konga && !kongaAudio.paused) {
@@ -26,7 +28,33 @@ const Landing = () => {
     }
   }, [konga])
 
+  const navigate = useNavigate()
   const location = useLocation()
+  
+  // Capture key presses
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      setLastKeys((keys) => [...keys, e.code])
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
+  
+  // If konami code is typed then redirect to /silly-game
+  useEffect(() => {
+    if (location.pathname === '/silly-game') return
+
+    const kazuhisaCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA']
+    if (lastKeys.length > 10) setLastKeys([])
+
+    if (lastKeys.join('') === kazuhisaCode.join('')) {
+      setLastKeys([])
+      navigate('/silly-game')
+    }
+  }, [lastKeys])
+
   useEffect(() => {
     if (!['#projects', '#about', '#connect'].includes(location.hash)) return
 

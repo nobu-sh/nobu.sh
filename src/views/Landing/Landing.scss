@@ -21,3 +21,13 @@ div.Landing {
     animation: animatein2 1s ease;
   }
 }
+
+svg {
+  color: var(--text-dimmed-more);
+  transition: color 50ms ease-in-out, transform 50ms ease-in-out;
+
+  &:hover {
+    color: var(--accent-color);
+    transform: rotate(5deg);
+  }
+}

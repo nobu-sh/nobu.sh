@@ -5,6 +5,7 @@ import LinkedIn from '@/icons/LinkedIn'
 import Discord from '@/icons/Discord'
 
 import './Top.scss'
+import At from '@/icons/At'
 
 const Top = () => (
   <Clamp className="Top"> 
@@ -15,9 +16,9 @@ const Top = () => (
         <h1 className="Dimmed">I create stuff</h1>
         <p className="ShortAbout">I'm a software developer located in East Moline, Illinois specializing in creating and designing high-quality websites and applications</p>
         <div className="Socials">
-          <a href="https://www.linkedin.com/in/nobu-sh/" className="LinkedIn" target="_blank"><LinkedIn /></a>
-          <a href="https://github.com/nobu-sh" className="Github" target="_blank"><GitHub /></a>
-          <a href="https://discord.com/users/316669053957832706" className="Discord" target="_blank"><Discord /></a>
+          <a href="https://www.linkedin.com/in/nobu-sh/" target="_blank"><LinkedIn /></a>
+          <a href="https://github.com/nobu-sh" target="_blank"><GitHub /></a>
+          <a href="mailto:chat@nobu.sh" target="_blank"><At /></a>
         </div>
       </div>
       <div className="Icon">

@@ -4,6 +4,7 @@ import { FC } from 'react'
 
 import Landing from '@/views/Landing'
 import Navbar from '@/components/Navbar'
+import Mania from '@/views/Mania'
 
 export interface RouteItem {
   path: string
@@ -11,6 +12,10 @@ export interface RouteItem {
 }
 
 export const RouteItems: RouteItem[] = [
+  {
+    path: '/silly-game',
+    Component: Mania,
+  },
   {
     path: '*',
     Component: Landing,
