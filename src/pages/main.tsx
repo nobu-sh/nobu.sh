@@ -220,7 +220,7 @@ function ProjectsSection() {
 			<p className="text-foreground-dim text-xl text-center">
 				Some of the stuff I&apos;ve created.
 			</p>
-			<div className="grid grid-cols-1 lg:gap-16 gap-8 mt-24">
+			<div className="grid grid-cols-1 lg:gap-16 gap-8 lg:mt-24 mt-8">
 				{spotlightProjects.map((item, index) => (
 					<SpotlightProject
 						dir={index % 2 === 0 ? "start" : "end"}
