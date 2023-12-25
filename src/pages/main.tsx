@@ -119,7 +119,7 @@ function TopSection() {
 				<div className="flex flex-col xl:items-end items-center xl:justify-center justify-end row-start-1 xl:row-start-auto xl:translate-x-12 translate-x-0">
 					<img
 						alt="Nobu Logo"
-						className="w-[23rem] h-[23rem]"
+						className="md:w-[23rem] md:h-[23rem] w-[18rem] h-[18rem]"
 						draggable={false}
 						ref={logoReference}
 						src={Icon}
@@ -362,7 +362,7 @@ function SpotlightProject({
 						draggable={false}
 						src={project.image}
 						className={twMerge(
-							"block lg:max-w-[90%] max-w-full h-auto saturate-[10%] hover:saturate-100 transition-all scale-100 hover:scale-105",
+							"block lg:max-w-[90%] max-w-full h-auto lg:saturate-[10%] saturate-100 hover:saturate-100 transition-all scale-100 hover:scale-105",
 							dir === "start" ? "float-right" : "float-left"
 						)}
 					/>
