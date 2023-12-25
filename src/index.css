@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes vibrate {
+	0%, 100% {
+			transform: translateX(0) rotate(0) scale(1);
+	}
+	
+	20%, 80% {
+			transform: translateX(-2px) rotate(-2deg) scale(1.02);
+	}
+	
+	40%, 60% {
+			transform: translateX(2px) rotate(2deg) scale(0.98);
+	}
+	
+	50% {
+			transform: rotate(2deg) scale(1.04);
+	}
+}
+
+
 /* Variables */
 @layer base {
 	:root {

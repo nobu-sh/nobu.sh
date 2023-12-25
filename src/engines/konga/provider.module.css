@@ -1,0 +1,19 @@
+@keyframes animate-konga-in {
+	from {
+		transform: scale(0);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+.konga_provider {
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+
+	animation: animate-konga-in 1s ease;
+}

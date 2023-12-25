@@ -7,6 +7,7 @@ import { AtSignIcon, Download, Github } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { useLocation } from "react-router-dom";
+import { useRecoilState } from "recoil";
 
 import Page from "@/components/page";
 import Icon from "@/assets/favicon.webp";
@@ -17,6 +18,7 @@ import PVZ from "@/assets/pvz.webp";
 import Telegram from "@/icons/telegram";
 import Discord from "@/icons/discord";
 import Render from "@/assets/render.webp";
+import { kongaState } from "@/states";
 
 export default function MainPage() {
 	// Custom hash handle so we can make things fancy :3
@@ -46,6 +48,35 @@ export default function MainPage() {
 }
 
 function TopSection() {
+	const [clicks, setClicks] = useState(0);
+	const [, setKonga] = useRecoilState(kongaState);
+	const logoReference = useRef<HTMLImageElement>(null);
+
+	useEffect(() => {
+		if (!logoReference.current || clicks < 1) return;
+		if (clicks >= 21) {
+			setKonga(true);
+		}
+
+		// Vibrate Animation
+		logoReference.current.style.animation = "vibrate 0.15s linear infinite";
+		// Hue shift
+		logoReference.current.style.filter = `hue-rotate(${clicks * 25}deg)`;
+		// Transition
+		logoReference.current.style.transition = "filter 0.2s ease-in-out";
+
+		const resetTimer = setTimeout(() => {
+			setClicks(0);
+			if (!logoReference.current) return;
+			logoReference.current.style.transition = "filter 0.4s ease-in-out";
+			logoReference.current.style.filter = "";
+			logoReference.current.style.animation = "";
+		}, 2000);
+
+		return () => clearTimeout(resetTimer);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [clicks]);
+
 	return (
 		<section className="md:min-h-[calc(100vh-5rem)] min-h-0 flex xl:py-60 md:py-40 py-20 select-none">
 			<div className="grid grid-cols-1 xl:grid-cols-2 w-full -mt-20">
@@ -85,12 +116,14 @@ function TopSection() {
 						</a>
 					</div>
 				</div>
-				<div className="flex flex-col xl:items-end items-center xl:justify-center justify-end row-start-1 xl:row-start-auto">
+				<div className="flex flex-col xl:items-end items-center xl:justify-center justify-end row-start-1 xl:row-start-auto xl:translate-x-12 translate-x-0">
 					<img
 						alt="Nobu Logo"
-						className="w-[23rem] h-[23rem]  xl:translate-x-12 translate-x-0"
+						className="w-[23rem] h-[23rem]"
 						draggable={false}
+						ref={logoReference}
 						src={Icon}
+						onClick={() => setClicks((clicks) => clicks + 1)}
 					/>
 				</div>
 			</div>
