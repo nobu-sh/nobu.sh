@@ -4,7 +4,7 @@
 
 /* Variables */
 @layer base {
-	*:root {
+	:root {
 		--background: 0 0% 0%;
 		--background-light: 0 0% 14%;
 		--background-bright: 0 0% 20%;
@@ -16,6 +16,16 @@
 		
 		--clamp: 1356px;
 		--pad-x: 4rem;
+		
+		font-size: 16px;
+	}
+	
+	/* Decrease pad-x for mobile */
+	@media (max-width: 768px) {
+		:root {
+			--pad-x: 1rem;
+			font-size: 14px;
+		}
 	}
 	
 	@keyframes cursor {
@@ -86,4 +96,37 @@
 		}
 	}
 	
+	.show-more-button {
+		@apply relative w-full text-foreground-dark hover:text-foreground-dim transition-colors font-bold;
+		
+		&::before {
+			content: '';
+			@apply absolute left-0 top-[50%] h-[1px] bg-current;
+			width: calc(50% - 4rem);
+		}
+		
+		&::after {
+			content: '';
+			@apply absolute right-0 top-[50%] h-[1px] bg-current;
+			width: calc(50% - 4rem);
+		}
+	}
+	
+	.cool-contact-thing {
+		@apply relative w-full text-accent font-bold;
+		
+		&::before {
+			content: '';
+			@apply absolute left-0 top-[50%] w-full h-[1px] bg-current z-0;
+		}
+		
+		p {
+			@apply relative bg-background ml-4 px-4 py-1 z-10 w-fit;
+		}
+	}
+	
+	.silly-singleton-gradient {
+		background: rgb(0,0,0);
+    background: linear-gradient(27deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%);
+	}
 }

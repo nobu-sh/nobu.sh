@@ -20,6 +20,17 @@ export default {
 			},
 			animation: {
 				cursor: "cursor 1.4s infinite"
+			},
+			fontFamily: {
+				code: [
+					"sorce-code-pro",
+					"Menlo",
+					"Monaco",
+					"Consolas",
+					"Liberation Mono",
+					"Courier New",
+					"monospace"
+				]
 			}
 		}
 	},
