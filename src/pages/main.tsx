@@ -11,14 +11,16 @@ import { useRecoilState } from "recoil";
 
 import Page from "@/components/page";
 import Icon from "@/assets/favicon.webp";
-import Dragon from "@/assets/dragon.webp";
-import MAEC from "@/assets/maec.webp";
-import Blog from "@/assets/blog.webp";
+import Enterlink from "@/assets/enterlink.webp";
+import Enterverse from "@/assets/enterverse.webp";
+import Amihan from "@/assets/amihan.webp";
 import PVZ from "@/assets/pvz.webp";
 import Telegram from "@/icons/telegram";
 import Discord from "@/icons/discord";
 import Render from "@/assets/render.webp";
 import { kongaState } from "@/states";
+import { useSocket } from "@/components/heartrate";
+import Heart from "@/icons/heart";
 
 export default function MainPage() {
 	// Custom hash handle so we can make things fancy :3
@@ -81,19 +83,18 @@ function TopSection() {
 		<section className="md:min-h-[calc(100vh-5rem)] min-h-0 flex xl:py-60 md:py-40 py-20 select-none">
 			<div className="grid grid-cols-1 xl:grid-cols-2 w-full -mt-20">
 				<div className="flex flex-col items-start justify-center">
-					<p className="text-lg font-black font-code text-foreground-dark mb-1">
+					{/* <p className="text-xl font-black font-code text-foreground-dark mb-1">
 						Foo Bar Baz
-					</p>
-					<h1 className="md:text-6xl text-5xl font-extrabold text-foreground">
+					</p> */}
+					<h1 className="md:text-6xl text-5xl font-extrabold mb-2 text-foreground">
 						Yooo, I&apos;m <span className="text-accent">Nobu</span>
 					</h1>
 					<h1 className="md:text-5xl text-4xl font-extrabold text-foreground-dim">
 						I create stuff
 					</h1>
-					<p className="text-xl text-foreground-dim my-4 xl:max-w-none max-w-[40rem]">
-						I&apos;m a software developer located in East Moline, Illinois
-						specializing in creating and designing high-quality websites and
-						applications
+					<p className="text-xl text-foreground-dim mt-6 mb-4 xl:max-w-none max-w-[40rem]">
+						I&apos;m a software developer based in Iowa City. I specialize in
+						building high-quality full-stack websites and applications.
 					</p>
 					<div className="flex flex-row gap-4">
 						<a
@@ -145,39 +146,49 @@ interface SpotlightProject extends Project {
 
 const spotlightProjects: Array<SpotlightProject> = [
 	{
-		name: "Meta Ape Elite Club",
+		name: "Enterlink",
 		description:
-			"Staking website for an NFT community; The backend uses Fastify and Redis to provide quick API responses. It also utilizes Solana on-chain data via Helius RPC provider.",
-		image: MAEC,
-		technologies: ["React", "SASS", "Web3", "Fastify"],
-		url: "https://metaapeeliteclub.com/"
+			"Platform for discovering and managing events in VRChat and other metaverse games, enhancing engagement and accessibility. I built and deployed this product from the ground up.",
+		image: Enterlink,
+		technologies: ["Next.js", "Postgres", "Cloudflare", "Docker"],
+		url: "https://enterlink.app",
+		github: "https://github.com/enterverse"
 	},
 	{
-		name: "Dragon",
+		name: "Enterverse",
 		description:
-			"Unreleased web page and blog site for a Minecraft community built with React using Vite; It is optimized, responsive, and fits the Minecraft feel.",
-		image: Dragon,
-		technologies: ["React", "SCSS", "TypeScript", "PocketBase"]
+			"Company website for VEU Inc. It showcases the company's projects and team. I built this website using React and Tailwind CSS ensuring responsiveness and pixel-perfect accuracy to the design.",
+		image: Enterverse,
+		technologies: ["React", "Tailwind", "Netlify", "Vite"],
+		url: "https://enterverse.com",
+		github: "https://github.com/enterverse/enterverse.com"
 	},
 	{
-		name: "My Blog",
+		name: "Amihan Entertainment",
 		description:
-			"A personal blog that goes more in-depth on how I started coding. It's also a proof of concept for my future blog website. Written in raw HTML and CSS because why not :)",
-		image: Blog,
-		technologies: ["HTML", "CSS"],
-		github: "https://github.com/nobu-sh/about-me",
-		url: "https://blog.nobu.sh/"
+			"Company website for Amihan Entertainment. I built this website using React and SASS using viewport scaling to ensure responsiveness and pixel-perfect accuracy to the design.",
+		image: Amihan,
+		technologies: ["React", "SASS", "ESBuild", "Github Actions"],
+		url: "https://amihan.gg"
 	},
 	{
 		name: "Plants Vs. Zombies VR",
 		description:
-			"Work in progress Plants Vs. Zombies built for VR. It is being developed in Unity 2019.4.31f1 LTS, there is no definite release date but it's in the works!",
+			"Work in progress Plants Vs. Zombies built for VR. It is being developed in Unity 2019.4.31f1 LTS, using C# and Blender for 3D models. There is no definite release date but it's in the works!",
 		image: PVZ,
 		technologies: ["C#", "Unity", "VR/AR", "Blender"]
 	}
 ];
 
 const projects: Array<Project> = [
+	{
+		name: "SerenityJS",
+		description:
+			"An open source Minecraft Bedrock Edition server software written in TypeScript. It is designed to be efficient and easy to use.",
+		technologies: ["TypeScript", "Rust", "Protocol Buffers"],
+		github: "https://github.com/SerenityJS/serenity",
+		url: "https://www.serenityjs.net/"
+	},
 	{
 		name: "BeAPI",
 		description:
@@ -195,25 +206,17 @@ const projects: Array<Project> = [
 		url: "https://marketplace.visualstudio.com/items?itemName=Nobuwu.mc-color"
 	},
 	{
-		name: "fine-tuned",
+		name: "@enterlink/vrchat",
 		description:
-			"Work in progress music streaming library for Discord.JS. It supports a variety of filters and platforms. The API is just not exposed yet.",
-		technologies: ["Discord.JS", "TypeScript", "FFmpeg"],
-		github: "https://github.com/nobu-sh/fine-tuned"
-	},
-	{
-		name: "djseed",
-		description:
-			"A utility library for multithreading your Discord bot. More useful utilities are still being added but it does what it advertises :)",
-		technologies: ["Discord.JS", "TypeScript", "Sharding"],
-		github: "https://github.com/nobu-sh/djseed",
-		url: "https://nobu-sh.github.io/djseed/"
+			"A utility library for interacting with the VRChat API. It provides a simple interface for creating clients or a pool of clients.",
+		technologies: ["TypeScript", "VRChat", "NPM"],
+		github: "https://github.com/enterverse/vrchat"
 	},
 	{
 		name: "dotlang",
 		description:
 			"Parses .lang files and provides mapped results. Useful for internationalization or parsing a Minecraft language directory.",
-		technologies: ["JavaScript", "NPM"],
+		technologies: ["JavaScript", "Parsing", "NPM"],
 		github: "https://github.com/nobu-sh/dotlang"
 	},
 	{
@@ -247,13 +250,13 @@ function ProjectsSection() {
 
 	return (
 		<section className="py-16 select-none" id="#projects">
-			<h2 className="text-3xl text-center font-bold mb-1">
+			<h2 className="text-3xl text-center font-bold">
 				Project <span className="text-accent">Spotlight</span>
 			</h2>
-			<p className="text-foreground-dim text-xl text-center">
+			{/* <p className="text-foreground-dim text-xl text-center">
 				Some of the stuff I&apos;ve created.
-			</p>
-			<div className="grid grid-cols-1 lg:gap-16 gap-8 lg:mt-24 mt-8">
+			</p> */}
+			<div className="grid grid-cols-1 lg:gap-16 gap-8 lg:mt-20 mt-8">
 				{spotlightProjects.map((item, index) => (
 					<SpotlightProject
 						dir={index % 2 === 0 ? "start" : "end"}
@@ -310,9 +313,33 @@ function SpotlightProject({
 					dir === "start" ? "lg:order-1 order-2" : "lg:order-2 order-2"
 				)}
 			>
-				<h3 className="text-2xl font-medium">{project.name}</h3>
+				<div className="flex flex-row justify-between items-center">
+					<h3 className="text-2xl font-medium">{project.name}</h3>
+					<div className="flex flex-row items-center gap-4">
+						{project.github && (
+							<a
+								className="text-foreground-dark hover:text-foreground hover:rotate-6 transition-all"
+								href={project.github}
+								rel="noreferrer"
+								target="_blank"
+							>
+								<GitHubLogoIcon className="w-6 h-6" />
+							</a>
+						)}
+						{project.url && (
+							<a
+								className="text-foreground-dark hover:text-foreground hover:rotate-6 transition-all"
+								href={project.url}
+								rel="noreferrer"
+								target="_blank"
+							>
+								<GlobeIcon className="w-6 h-6" />
+							</a>
+						)}
+					</div>
+				</div>
 				<p className="text-xl text-foreground-dim">{project.description}</p>
-				<div className="flex flex-row gap-4 mt-2 flex-wrap">
+				<div className="flex flex-row gap-4 flex-wrap">
 					{project.technologies.map((item) => (
 						<p
 							className="text-base text-accent rounded-lg px-2 py-1 border border-accent"
@@ -321,28 +348,6 @@ function SpotlightProject({
 							{item}
 						</p>
 					))}
-				</div>
-				<div className="flex flex-row gap-4 flex-wrap h-6">
-					{project.github && (
-						<a
-							className="text-foreground-dark hover:text-foreground hover:rotate-6 transition-all"
-							href={project.github}
-							rel="noreferrer"
-							target="_blank"
-						>
-							<GitHubLogoIcon className="w-6 h-6" />
-						</a>
-					)}
-					{project.url && (
-						<a
-							className="text-foreground-dark hover:text-foreground hover:rotate-6 transition-all"
-							href={project.url}
-							rel="noreferrer"
-							target="_blank"
-						>
-							<GlobeIcon className="w-6 h-6" />
-						</a>
-					)}
 				</div>
 			</div>
 			<div
@@ -416,63 +421,64 @@ function ExtraProject({ project }: { project: Project }) {
 }
 
 function AboutSection() {
+	const { latestHeartbeat } = useSocket();
+
 	return (
 		<section className="py-16 select-none grid lg:grid-cols-2 grid-cols-1 gap-6">
 			<div className="flex flex-col justify-center gap-6" id="#about">
 				<h2 className="text-3xl text-left font-bold mb-1">
 					About <span className="text-accent">Me</span>
 				</h2>
-				<p className="text-foreground-dim text-xl text-left">Heyo,</p>
 				<p className="text-foreground-dim text-xl text-left">
 					My name is <span className="text-accent">Nobu</span>, and I&apos;m a
-					software developer located in East Moline, Illinois specializing in
-					creating and designing high-quality websites and applications. I also
-					ponder around with many other hobbies though like gamedev, 3d
-					modeling, and pixel art.
+					software developer based in Iowa City. I specialize in building
+					high-quality full-stack websites and applications, but I also explore
+					gamedev, 3D modeling, and pixel art.
 				</p>
 				<p className="text-foreground-dim text-xl text-left">
-					Way back around the age of 10, I enjoyed using command blocks in
-					Minecraft. This passion spiraled out of control from making addons for
-					the game to learning multiple coding languages to creating full-stack
-					applications and websites.
+					My journey started around age 10 with Minecraft command blocks. That
+					curiosity led me from creating game add-ons to learning multiple
+					programming languages and eventually developing full-stack
+					applications.
 				</p>
 				<p className="text-foreground-dim text-xl text-left">
-					As of now, I am constantly working towards creating new things and
-					expanding my knowledge with new technologies.
+					Today, I’m always building, experimenting, and expanding my knowledge
+					with new technologies.
 				</p>
+
 				<div className="cool-contact-thing" id="#contact">
 					<p>Contact Me :3</p>
 				</div>
-				<div className="flex flex-row gap-2 items-center h-6">
+				<div className="flex flex-row gap-4 items-center h-6">
 					<a
 						className="text-foreground-dark hover:text-foreground hover:rotate-6 transition-all"
 						href="mailto:chat@nobu.sh"
 					>
-						<AtSignIcon className="w-6 h-6" />
+						<AtSignIcon className="size-8" />
 					</a>
 					<a
 						className="text-foreground-dark hover:text-foreground hover:rotate-6 transition-all"
 						href="https://www.linkedin.com/in/nobu-sh/"
 					>
-						<LinkedInLogoIcon className="w-6 h-6" />
+						<LinkedInLogoIcon className="size-8" />
 					</a>
 					<a
 						className="text-foreground-dark hover:text-foreground hover:rotate-6 transition-all"
 						href="https://github.com/nobu-sh"
 					>
-						<GitHubLogoIcon className="w-6 h-6" />
+						<GitHubLogoIcon className="size-8" />
 					</a>
 					<a
 						className="text-foreground-dark hover:text-foreground hover:rotate-6 transition-all"
 						href="https://t.me/nobu_sh"
 					>
-						<Telegram className="w-6 h-6" />
+						<Telegram className="size-8" />
 					</a>
 					<a
 						className="text-foreground-dark hover:text-foreground hover:rotate-6 transition-all"
 						href="https://discord.com/users/316669053957832706"
 					>
-						<Discord className="w-[1.75rem] h-[1.75rem]" />
+						<Discord className="size-9" />
 					</a>
 				</div>
 			</div>
@@ -484,6 +490,24 @@ function AboutSection() {
 					src={Render}
 				/>
 				<div className="absolute top-0 left-0 w-full h-full silly-singleton-gradient" />
+				{latestHeartbeat && (
+					<a
+						className="group absolute top-1/2 right-1/2 lg:translate-x-full -translate-y-[120%] translate-x-1/4 -rotate-[25deg]"
+						href="https://vitals.nobu.sh"
+						rel="noreferrer"
+						target="_blank"
+					>
+						<Heart
+							className="heart lg:size-14 size-12 text-red-200 group-hover:text-red-300"
+							style={{
+								animationDuration: `${(60 / latestHeartbeat.bpm).toFixed(2)}s`
+							}}
+						/>
+						<p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-pink-700 text-xs font-bold">
+							{latestHeartbeat.bpm}
+						</p>
+					</a>
+				)}
 			</div>
 		</section>
 	);
@@ -493,7 +517,7 @@ function Footer() {
 	return (
 		<footer className="pt-16 pb-8 select-none flex md:flex-row flex-col md:items-center md:gap-4 gap-1">
 			<p className="text-foreground-dark text-sm font-semibold">
-				© nobu.sh 2024 - All Rights Reserved
+				© nobu.sh 2025 - All Rights Reserved
 			</p>
 			<div className="flex flex-row items-center gap-4">
 				<a

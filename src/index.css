@@ -20,6 +20,23 @@
 	}
 }
 
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(1.1);
+  }
+  20% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+}
 
 /* Variables */
 @layer base {
@@ -147,5 +164,9 @@
 	.silly-singleton-gradient {
 		background: rgb(0,0,0);
     background: linear-gradient(27deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%);
+	}
+	
+	.heart {
+		animation: heartbeat 1s linear infinite;
 	}
 }

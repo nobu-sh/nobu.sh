@@ -3,17 +3,13 @@ import * as ReactDOM from "react-dom/client";
 import { RecoilRoot } from "recoil";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import SillyGame from "./pages/silly-game";
 import MainPage from "./pages/main";
 import KongaProvider from "./engines/konga/provider";
+import { SocketProvider } from "./components/heartrate";
 
 import "./index.css";
 
 const router = createBrowserRouter([
-	{
-		path: "/silly-game",
-		Component: () => <SillyGame />
-	},
 	{
 		path: "*",
 		Component: () => <MainPage />
@@ -22,9 +18,11 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.querySelector("#root")!).render(
 	<React.StrictMode>
-		<RecoilRoot>
-			<RouterProvider router={router} />
-			<KongaProvider />
-		</RecoilRoot>
+		<SocketProvider>
+			<RecoilRoot>
+				<RouterProvider router={router} />
+				<KongaProvider />
+			</RecoilRoot>
+		</SocketProvider>
 	</React.StrictMode>
 );
