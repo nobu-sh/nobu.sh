@@ -58,7 +58,7 @@ export default function Navbar() {
 					</h1>
 				</NavLink>
 				<div className="flex flex-row items-center gap-8 text-sm">
-					<NavLink blank to="/desseyn_logan_resume_08_14_2025.pdf">
+					<NavLink blank to="/desseyn_logan_resume_08_15_2025.pdf">
 						Resume
 					</NavLink>
 					<NavLink to="/#contact">Contact Me</NavLink>
