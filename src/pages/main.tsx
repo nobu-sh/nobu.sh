@@ -476,7 +476,7 @@ function AboutSection() {
 					</a>
 					<a
 						className="text-foreground-dark hover:text-foreground hover:rotate-6 transition-all"
-						href="https://discord.com/users/316669053957832706"
+						href="https://discord.com/users/458806640083468288"
 					>
 						<Discord className="size-9" />
 					</a>
