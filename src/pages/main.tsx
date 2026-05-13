@@ -93,7 +93,7 @@ function TopSection() {
 						I create stuff
 					</h1>
 					<p className="text-xl text-foreground-dim mt-6 mb-4 xl:max-w-none max-w-[40rem]">
-						I&apos;m a software developer based in Iowa City. I specialize in
+						I&apos;m a software developer based in San Francisco. I specialize in
 						building high-quality full-stack websites and applications.
 					</p>
 					<div className="flex flex-row gap-4">
@@ -431,7 +431,7 @@ function AboutSection() {
 				</h2>
 				<p className="text-foreground-dim text-xl text-left">
 					My name is <span className="text-accent">Nobu</span>, and I&apos;m a
-					software developer based in Iowa City. I specialize in building
+					software developer based in San Francisco. I specialize in building
 					high-quality full-stack websites and applications, but I also explore
 					gamedev, 3D modeling, and pixel art.
 				</p>
