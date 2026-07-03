@@ -13,7 +13,7 @@ const Page = forwardRef<HTMLDivElement, PageProps>(function Page(
 		<div
 			ref={reference}
 			className={twMerge(
-				"grid grid-rows-[5rem,1fr] w-screen min-h-screen",
+				"grid grid-rows-[5rem,1fr] w-full min-h-screen",
 				className
 			)}
 			{...props}
